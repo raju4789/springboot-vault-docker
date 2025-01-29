@@ -32,20 +32,33 @@ git clone <repository-url>
 cd springboot-vault-docker
 ```
 
-### 2. Build the Application
+### 2. Run the application
 
-You can build the application locally using Maven:
+1. Build the project:
+   ```bash
+   docker-compose build --no-cache
+   ```
+2. Start the services using Docker:
+   ```bash
+   docker-compose up -d
+   
+   ```
 
-```bash
-./mvnw clean package -DskipTests
-```
+### Vault Setup
 
-### 3. Run with Docker Compose
+The `docker-compose.yml` file configures Vault in development mode with the following settings:
 
-Start the application and Vault using Docker Compose:
+- **Root Token**: `root`
+- **Address**: `http://vault:8200`
+- **KV Backend**: `secret`
+- **Default Context**: `kv/springboot-vault-docker`
 
-```bash
-docker-compose up --build
+Add below secrets
+
+```json
+{
+  "APP_SECRET": "vault-secret"
+}
 ```
 
 This will:
@@ -73,18 +86,9 @@ app:
   secret: ${APP_SECRET:"This is a secret"}
 ```
 
-You can override this by setting the `APP_SECRET` environment variable.
+You can override this by setting the `APP_SECRET` variable in vault.
 
-## Configuration
 
-### Vault Setup
-
-The `docker-compose.yml` file configures Vault in development mode with the following settings:
-
-- **Root Token**: `root`
-- **Address**: `http://vault:8200`
-- **KV Backend**: `secret`
-- **Default Context**: `kv/springboot-vault-docker`
 
 ### Spring Boot Configuration
 
@@ -101,9 +105,6 @@ spring:
         backend: secret
         default-context: "kv/springboot-vault-docker"
 ```
-
-### Customizing Secrets
-
 
 ### Debugging
 
@@ -125,5 +126,3 @@ logging:
 
 This project is licensed under the Apache License 2.0. See the `LICENSE` file for details.
 ```
-
-This `README.md` provides a comprehensive overview of the project, including setup instructions, configuration details, and references. Let me know if you'd like to customize it further!
