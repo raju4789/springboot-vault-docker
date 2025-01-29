@@ -90,6 +90,9 @@ You can override this by setting the `APP_SECRET` variable in vault.
 
 
 
+<img width="887" alt="Screenshot 2568-01-29 at 21 31 32" src="https://github.com/user-attachments/assets/a9e4b18e-e13b-4834-85ba-21b0b114a998" />
+
+
 ### Spring Boot Configuration
 
 The Spring Boot application is configured to use Vault via the `application.yml` file:
