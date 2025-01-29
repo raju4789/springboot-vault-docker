@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springboot-vault-docker
+  cloud:
+    vault:
+      uri: http://vault:8200
+      token: root
+      kv:
+        enabled: true
+        backend: secret
+        default-context: "kv/springboot-vault-docker"
+  config:
+    import: vault://
+
+app:
+  secret: ${APP_SECRET:"This is a secret"}
+
+logging:
+  level:
+    org.springframework.cloud.vault: DEBUG
