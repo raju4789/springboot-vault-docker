@@ -28,7 +28,7 @@ This is a demo project that demonstrates how to integrate Spring Boot with Hashi
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/raju4789/springboot-vault-docker.git
 cd springboot-vault-docker
 ```
 
